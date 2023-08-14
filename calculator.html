@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+   <link rel="stylesheet" href="bootstrap.min.css">
+
+    <style>
+      #cb {
+        background-color: rgb(23, 27, 46);
+        height: 600px;
+        width: 500px;
+        border: 4px solid rgb(255, 255, 86);
+        border-radius: 5%;
+        box-shadow: 0px 10px 20px yellow; /* box-shadow( x-axis   y axis   blur-value    color)*/
+        transition: all 0.5s;
+        margin: auto;
+        padding: 20px;
+      }
+      #cb:hover {
+        box-shadow: 0px 10px 30px 5px yellow;
+        transform: scale(1.05) translateY(20px);
+      }
+      textarea {
+        text-align: center;
+      }
+      button {
+        margin-right: 15px;
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0px 5px 5px yellow;
+        transition: all 0.5s;
+      }
+      button:hover {
+        box-shadow: 0px 5px 2px 5px yellow;
+        transform: scale(1.05) translateY(5px);
+      }
+    </style>
+  </head>
+
+  <body style="background-color: rgb(15, 17, 29); color: whitesmoke">
+    <center>
+      <h1>Enter To Calculate !</h1>
+    </center>
+    <div id="cb">
+      <form action="/ll">
+        <div>
+          Enter The First Number :-
+
+          <input
+            id="inp1"
+            class="form-control"
+            type="number"
+            style="padding: 20px"
+          />
+        </div>
+
+        &nbsp;
+
+        <div>
+          Enter The Second Number :-
+
+          <input
+            id="inp2"
+            class="form-control"
+            type="number"
+            style="padding: 20px"
+          />
+        </div>
+
+        &nbsp;
+
+        <center>
+          <button id="add">ADD</button>
+          <button id="sub">SUB</button>
+          <button id="mul">MUL</button>
+          <button id="divv">DIV</button>
+        </center>
+        &nbsp;
+        <p style="text-align: center">RESULT</p>
+
+        <textarea
+          class="form-control"
+          name=""
+          id=""
+          cols="20"
+          rows="8"
+        ></textarea>
+
+        <button type="reset" onclick="cl()">RESET</button>
+      </form>
+    </div>
+
+    <script>
+      document.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+
+      let tarea = document.querySelector("textarea");
+      let a = document.querySelector("#add");
+      let s = document.querySelector("#sub");
+      let m = document.querySelector("#mul");
+      let d = document.querySelector("#divv");
+
+      function cl() {
+        tarea.innerText = "";
+      }
+
+      a.addEventListener("click", (e) => {
+        let inp1 = document.querySelector("form #inp1").value;
+        let inp2 = document.querySelector("#inp2").value;
+        if (inp1 == "" || inp2 == "") {
+          tarea.innerText = "Please enter both values !";
+        } else {
+          let res = parseInt(inp1) + parseInt(inp2);
+          tarea.innerText = res;
+        }
+      });
+
+      s.addEventListener("click", () => {
+        let inp1 = document.querySelector("form #inp1").value;
+        let inp2 = document.querySelector("#inp2").value;
+        if (inp1 == "" || inp2 == "") {
+          tarea.innerText = "Please enter both values !";
+        } else {
+          let res = parseInt(inp1) - parseInt(inp2);
+          tarea.innerText = res;
+        }
+      });
+
+      m.addEventListener("click", () => {
+        let inp1 = document.querySelector("form #inp1").value;
+        let inp2 = document.querySelector("#inp2").value;
+        console.log(inp1);
+        if (inp1 == "" || inp2 == "") {
+          tarea.innerText = "Please enter both values !";
+        } else {
+          let res = parseInt(inp1) * parseInt(inp2);
+          tarea.innerText = res;
+        }
+      });
+
+      d.addEventListener("click", () => {
+        let inp1 = document.querySelector("form #inp1").value;
+        let inp2 = document.querySelector("#inp2").value;
+        if (inp1 == "" || inp2 == "") {
+          tarea.innerText = "Please enter both values !";
+        } else {
+          let res = parseInt(inp1) / parseInt(inp2);
+          tarea.innerText = res;
+        }
+      });
+    </script>
+  </body>
+</html>
