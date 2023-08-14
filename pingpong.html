@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #c2 {
+        padding-top: 10px;
+        box-shadow: 0px 1px 1px 1px rgb(128, 128, 128);
+      }
+      .container {
+        width: 30%;
+
+        margin: auto;
+      }
+      img {
+        width: 100%;
+        height: 300px;
+        box-shadow: 0px 1px 1px 1px rgb(128, 128, 128);
+        object-fit: cover;
+      }
+      #ping {
+        box-shadow: 0px 1px 1px 1px rgb(128, 128, 128);
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0px;
+        font-style: bold;
+        padding-left: 4%;
+        font-weight: bold;
+        padding-bottom: 5px;
+      }
+      h1 {
+        display: inline-block;
+        margin: 0%;
+        padding-left: 4%;
+      }
+      #use {
+        margin: 0px;
+        font-style: bold;
+        padding-left: 4%;
+        font-weight: light;
+        font-size: large;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      #play {
+        margin: 0px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: bold;
+        padding-left: 4%;
+        font-weight: bold;
+        font-size: x-large;
+        display: inline;
+      }
+
+      select,
+      option {
+        padding: 10px;
+        border-radius: 40%;
+      }
+      button {
+        width: 33%;
+        padding: 15px 0px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 10%;
+        font-size: large;
+        border: none;
+        box-shadow: 0px 0px 2px 2px rgb(128, 128, 128);
+      }
+      .but {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-around;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="https://images.unsplash.com/photo-1679178936583-af19713f2a1c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+        alt=""
+      />
+
+      <p id="ping">Ping Pong Score Keeper !</p>
+
+      <div id="c2">
+        <h1 id="op1">0</h1>
+        <h1>to</h1>
+        <h1 id="op2">0</h1>
+
+        <p id="use">Use The Buttons Below to keep score</p>
+        <p id="play">Playing to</p>
+        <select name="s" id="select">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        <div class="but">
+          <button style="background-color: rgb(64, 222, 185)">
+            +1 Player One
+          </button>
+          <button style="background-color: rgb(87, 167, 217)">
+            +1 Player Two
+          </button>
+          <button style="background-color: rgb(187, 68, 68)">RESET</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let p1 = 0;
+    let p2 = 0;
+
+    document.querySelector("button").addEventListener("click", () => {
+      let total = parseInt(document.querySelector("select").value);
+
+      if (p1 < total && p2 != total) {
+        p1 += 1;
+        document.querySelector("#op1").innerText = p1;
+        if (p1 == total) {
+          document.querySelector("#op1").style.color = "green";
+          document.querySelector("#op2").style.color = "red";
+        }
+      }
+    });
+
+    document.querySelectorAll("button")[1].addEventListener("click", () => {
+      let total = parseInt(document.querySelector("select").value);
+
+      if (p2 < total && p1 != total) {
+        p2 += 1;
+        document.querySelector("#op2").innerText = p2;
+        if (p2 == total) {
+          document.querySelector("#op2").style.color = "green";
+          document.querySelector("#op1").style.color = "red";
+        }
+      }
+    });
+
+    document.querySelectorAll("button")[2].addEventListener("click", () => {
+      document.querySelector("#op2").innerText = 0;
+      document.querySelector("#op1").innerText = 0;
+      p1 = 0;
+      p2 = 0;
+      document.querySelector("select").value = 1;
+
+      document.querySelector("#op1").style.color = "black";
+      document.querySelector("#op2").style.color = "black";
+    });
+  </script>
+</html>
